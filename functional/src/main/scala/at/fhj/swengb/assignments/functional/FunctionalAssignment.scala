@@ -9,12 +9,19 @@ object FunctionalAssignment {
   /**
     * A function which returns its parameters in a changed order. Look at the type signature.
     */
-  def flip[A, B](t: (A, B)): (B, A) = ???
+  def flip[A, B](t: (A, B)): (B, A) = {
+    return (t._2,t._1)
+  }
 
   /**
     * given a Seq[A] and a function f : A => B, return a Seq[B]
     */
-  def unknown[A, B](as: Seq[A], fn: A => B): Seq[B] = ???
+  def unknown[A, B](as: Seq[A], fn: A => B): Seq[B] = {
+    for {
+      x <- as
+    }yield fn(x)
+
+  }
 
   /**
     * Returns the absolute value of the parameter i.
@@ -22,7 +29,9 @@ object FunctionalAssignment {
     * @param i a value, either with a positive or a negative sign.
     * @return
     */
-  def abs(i: Int): Int = ???
+  def abs(i: Int): Int = {
+    if (i < 0) i * -1 else i
+  }
 
 
   // Describe with your own words what this function does.
@@ -34,9 +43,9 @@ object FunctionalAssignment {
   //
   /**
     *
-    * @param as
-    * @param b
-    * @param fn
+    * @param as -> liste von Daten (list)
+    * @param b -> accumulator für foldl (acc)
+    * @param fn -> funktion (func)
     * @tparam A
     * @tparam B
     * @return
@@ -50,7 +59,9 @@ object FunctionalAssignment {
     * @param numbers
     * @return
     */
-  def sum(numbers: Seq[Int]): Int = ???
+  def sum(numbers: Seq[Int]): Int = {
+    return (op(numbers, 0) (_+_))
+  }
 
 
   /**
@@ -63,7 +74,19 @@ object FunctionalAssignment {
     * @param i parameter for which the factorial must be calculated
     * @return i!
     */
-  def fact(i: Int): Int = ???
+  def fact(i: Int): Int = {
+
+    var x: Int = 1
+    var y: Int = i
+
+
+    while (y > 0) {
+      x = x * y
+      y = y - 1
+
+    }
+    return x
+  }
 
   /**
     * compute the n'th fibonacci number
