@@ -39,12 +39,12 @@ object FunctionalAssignment {
   //
   /**
     *
-    * @param as
-    * @param b
-    * @param fn
-    * @tparam A
-    * @tparam B
-    * @return
+    * @param list a value of the data type list.
+    * @param acc accumulator carried and extended during executing the function.
+    * @param func a function taking the accumulator and the content of the list as two valid parameters.
+    * @tparam A variable of type A.
+    * @tparam B variable of type B.
+    * @return command used to get the result of the function.
     *
     *  Die Funktion "op" agiert wie eine normale FoldLeft-Funktion, die den Accumulator (b) als Startwert nimmt und die
     *  gegebene Funktion (fn) auf die restlichen Parameter anwendet.
@@ -52,21 +52,21 @@ object FunctionalAssignment {
     *  Zahl 0 als Akkumulator verwendet, die Funktion ist (_+_), wobei der Akkumulator additiv immer um die restlichen
     *  Werte der Liste "numbers" erweitert wird.
     *
-    *  Es ist sinnvoll die Hauptfunktion "op" und die sekundäre Funktion "fn" zu benennen, da somit klar wird, dass es
+    *  Es ist sinnvoll die Hauptfunktion "op" und die sekundäre Funktion "func" zu benennen, da somit klar wird, dass es
     *  sich um zwei unterschiedliche Funktionen handelt.
     *  Auch die Benennung A, B ist nicht schlecht, da somit zum Vorschein kommt, dass Dies zwei Variablen eines
     *  unterschiedlichen Typs sind.
     *  Nur die Variable "b" wurde unpassend benannt, da nicht gleich klar wird, dass es ein Akkumulator ist. Eine
     *  bessere Bezeichnung wäre zum Beispiel "acc".
     */
-  def op[A, B](as: Seq[A], b: B)(fn: (B, A) => B): B = as.foldLeft(b)(fn)
+  def op[A, B](list: Seq[A], acc: B)(func: (B, A) => B): B = list.foldLeft(acc)(func)
 
   /**
     * implement the summation of the given numbers parameter.
     * Use the function 'op' defined above.
     *
-    * @param numbers
-    * @return
+    * @param numbers a list of numbers.
+    * @return command used to get the result of the function.
     */
   def sum(numbers: Seq[Int]): Int = op(numbers,0) (_+_)
 
