@@ -43,9 +43,9 @@ object FunctionalAssignment {
 
   /**
     *
-    * @param as -> liste von Daten (list)
-    * @param b -> accumulator für foldl (acc)
-    * @param fn -> funktion (func)
+    * @param list -> liste von Daten (list)
+    * @param acc -> accumulator für foldl (acc)
+    * @param func -> funktion (func)
     * @tparam A
     * @tparam B
     * @return
