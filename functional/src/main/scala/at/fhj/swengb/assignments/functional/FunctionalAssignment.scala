@@ -87,9 +87,9 @@ object FunctionalAssignment {
      for (x <- 1 to (i - 1)) {
         m = m * x
      }
-     return m
+     m
    }
-   else return 0
+   else 0
   }
 
   /**
@@ -119,7 +119,7 @@ object FunctionalAssignment {
     for (i <- 0 until as.length-1) {
       v = v && gt(as(i),as(i+1))
     }
-    return v
+    v
   }
 
   /**
