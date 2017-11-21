@@ -35,7 +35,7 @@ class TreeSpec extends WordSpecLike with Matchers {
     */
   "illegalTree" in {
     intercept[IllegalArgumentException] {
-      Graph.mkGraph(pt0, 0, 100, 17, 1, 0s)
+      Graph.mkGraph(pt0, 0, 100, 17, 1, 0)
     }
     //    assert(Try(Graph.mkGraph(pt0, 0, 100, 17, 1, 0)).isFailure)
   }
