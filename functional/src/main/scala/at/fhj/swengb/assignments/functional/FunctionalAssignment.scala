@@ -34,13 +34,13 @@ object FunctionalAssignment {
   }
 
 
-  // Describe with your own words what this function does.
-  // in the comment below, add a description what this function does - in your own words - and give
-  // the parameters more descriptive names.
-  //
-  // Afterwards, compare your new naming scheme with the original one.
-  // What did you gain with your new names? What did you loose?
-  //
+  // foldl ist eine funktion die 3 parameter nimmt.
+  // den accumulator, eine funktion und eine liste.
+
+  //  foldl nimmt die funktion und gibt dieser Funktion die Parameter acc und liste.
+  //  Diese Recursion wird so lange ausgeführt bis die Liste keine Werte mehr hat.
+  // Anschließend wird der acc ausgegeben.
+
   /**
     *
     * @param as -> liste von Daten (list)
@@ -96,7 +96,11 @@ object FunctionalAssignment {
     *
     * https://en.wikipedia.org/wiki/Fibonacci_number
     */
-  def fib(n: Int): Int = ???
+  def fib(n: Int): Int = n match {
+    case 0 => n
+    case 1 => n
+    case _ => fib(n-1) + fib(n-2)
+  }
 
   /**
     * Implement a isSorted which checks whether an Array[A] is sorted according to a
@@ -105,7 +109,14 @@ object FunctionalAssignment {
     * Implementation hint: you always have to compare two consecutive elements of the array.
     * Elements which are equal are considered to be ordered.
     */
-  def isSorted[A](as: Array[A], gt: (A, A) => Boolean): Boolean = ???
+  def isSorted[A](as: Array[A], gt: (A, A) => Boolean): Boolean = {
+    var v: Boolean = true
+
+    for (i <- 0 until as.length-1) {
+      v = v && gt(as(i),as(i+1))
+    }
+    return v
+  }
 
   /**
     * Takes both lists and combines them, element per element.
@@ -113,7 +124,13 @@ object FunctionalAssignment {
     * If one sequence is shorter than the other one, the function stops at the last element
     * of the shorter sequence.
     */
-  def genPairs[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = ???
+  def genPairs[A, B](as: Seq[A], bs: Seq[B]): Seq[(A, B)] = {
+    for {
+
+      x <- as
+      y <- bs if as.indexOf(x) == bs.indexOf(y)
+    } yield (x,y)
+  }
 
   // a simple definition of a linked list, we define our own list data structure
   sealed trait MyList[+A]
@@ -126,9 +143,17 @@ object FunctionalAssignment {
   // it also provides a convenience constructor in order to instantiate a MyList without hassle
   object MyList {
 
-    def sum(list: MyList[Int]): Int = ???
+    def sum(list: MyList[Int]): Int = list match {
+      case MyNil => 0
 
-    def product(list: MyList[Int]): Int = ???
+      case Cons(head,tail) => head + sum(tail)
+    }
+
+    def product(list: MyList[Int]): Int = list match {
+      case MyNil => 1
+
+      case Cons(head,tail) => head * product(tail)
+    }
 
     def apply[A](as: A*): MyList[A] = {
       if (as.isEmpty) MyNil
