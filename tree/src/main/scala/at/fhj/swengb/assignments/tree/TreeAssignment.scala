@@ -45,6 +45,7 @@ object Graph {
   }
 
 
+
   /**
     * Creates / constructs a tree graph.
     *
@@ -73,10 +74,10 @@ object Graph {
       case _                           => Branch(Node(start), Branch(constructGraph(start.left(factor, angle, colorMap(acc-1)), acc+1), constructGraph(start.right(factor,angle, colorMap (acc-1)), acc +1)))
     }
     constructGraph(L2D(start,initialAngle,length,colorMap(0)), 1)
-
   }
 
-  }
+
+}
 
 
 
