@@ -1,8 +1,8 @@
 package at.fhj.swengb.assignments.tree
 
+import java.util.Currency
 import javafx.scene.paint.Color
 
-import scala.math.BigDecimal.RoundingMode
 import scala.util.Random
 
 object Graph {
@@ -23,12 +23,14 @@ object Graph {
   /**
     * creates a random tree
     *
-    * @param root
+    * @param root - Startpoint of graph
     * @return
     */
   def randomTree(root: Pt2D): Tree[L2D] =
-    mkGraph(root, Random.nextInt(360), Random.nextDouble() * 150, Random.nextInt(7))
-
+    mkGraph(root,
+      Random.nextInt(360),
+      Random.nextDouble() * 150,
+      Random.nextInt(7))
 
   /**
     * Given a Tree of L2D's and a function which can convert any L2D to a Line,
@@ -39,7 +41,18 @@ object Graph {
     * @param convert a converter function
     * @return
     */
-  def traverse[A, B](tree: Tree[A])(convert: A => B): Seq[B] =  ???
+  def traverse[A, B](tree: Tree[A])(convert: A => B): Seq[B] = {
+
+    def add(elem: Tree[A], list: Seq[A]): Seq[A] = {
+      elem match {
+        case Node(n) => list.seq :+ n
+        case Branch(le, ri) => add(le, add(ri, list))
+      }
+    }
+
+    //Put the nodes into a list and map operation
+    add(tree, List()).reverse.map(convert)
+  }
 
 
   /**
@@ -61,12 +74,65 @@ object Graph {
               treeDepth: Int,
               factor: Double = 0.75,
               angle: Double = 45.0,
-              colorMap: Map[Int, Color] = Graph.colorMap): Tree[L2D] = ???
+              colorMap: Map[Int, Color] = Graph.colorMap): Tree[L2D] = {
 
+    //illegal tree + treeSize0
+    require(treeDepth >= 0 && treeDepth <= (colorMap.size - 1))
+    Node(L2D(start, initialAngle, length, colorMap(0)))
+
+
+    def makeSubTree(leaf: Node[L2D],
+                      factor: Double,
+                      angle: Double,
+                      color: Color): Branch[L2D] = {
+
+      val nodeLeft = Node(leaf.value.left(factor, angle, color))
+      val nodeRight = Node(leaf.value.right(factor, angle, color))
+
+      Branch(leaf, Branch(nodeLeft, nodeRight))
+    }
+
+    def makeTree(currTree: Tree[L2D],
+                   depth: Int,
+                   maxDepth: Int): Tree[L2D] = {
+      if (depth == maxDepth)
+        currTree
+      else {
+        def addNewLevel(tree: Tree[L2D], currLevel: Int): Branch[L2D] = {
+          tree match {
+            case Node(root) =>
+              makeSubTree(Node(root), factor, angle, colorMap(currLevel))
+            case Branch(Node(root), Branch(Node(left), Node(right))) =>
+              val newSubtreeLeft =
+                makeSubTree(Node(left), factor, angle, colorMap(currLevel))
+              val newSubtreeRight =
+                makeSubTree(Node(right), factor, angle, colorMap(currLevel))
+              Branch(Node(root), Branch(newSubtreeLeft, newSubtreeRight))
+            case Branch(Node(root), Branch(left, right)) =>
+              Branch(Node(root),
+                Branch(addNewLevel(left, depth + 1),
+                  addNewLevel(right, depth + 1)))
+            case Branch(_, _) => ???
+          }
+        }
+
+        makeTree(addNewLevel(currTree, depth), depth + 1, maxDepth)
+      }
+    }
+
+    val rootNode: Tree[L2D] = Node(
+      L2D(start, initialAngle, length, colorMap(0)))
+
+    treeDepth match {
+      case 0 => rootNode
+      case _ => makeTree(rootNode, 0, treeDepth)
+    }
+
+
+
+
+  }
 }
-
-
-
 
 object L2D {
 
@@ -82,13 +148,15 @@ object L2D {
     * @param color the color
     * @return
     */
-  def apply(start: Pt2D, angle: AngleInDegrees, length: Double, color: Color): L2D = {
+  def apply(start: Pt2D,
+            angle: AngleInDegrees,
+            length: Double,
+            color: Color): L2D = {
     val angleInRadiants = toRadiants(angle)
     val end = Pt2D(start.x + length * Math.cos(angleInRadiants),
       start.y + length * Math.sin(angleInRadiants)).normed
     new L2D(start, end, color)
   }
-
 
 }
 
@@ -101,14 +169,14 @@ case class L2D(start: Pt2D, end: Pt2D, color: Color) {
   lazy val angle = {
     assert(!((xDist == 0) && (yDist == 0)))
     (xDist, yDist) match {
-      case (x, 0) if x > 0 => 0
-      case (0, y) if y > 0 => 90
-      case (0, y) if y < 0 => 270
-      case (x, 0) if x < 0 => 180
+      case (x, 0) if x > 0          => 0
+      case (0, y) if y > 0          => 90
+      case (0, y) if y < 0          => 270
+      case (x, 0) if x < 0          => 180
       case (x, y) if x < 0 && y < 0 => Math.atan(y / x) * 180 / Math.PI + 180
       case (x, y) if x < 0 && y > 0 => Math.atan(y / x) * 180 / Math.PI + 180
       case (x, y) if x > 0 && y < 0 => Math.atan(y / x) * 180 / Math.PI + 360
-      case (x, y) => Math.atan(y / x) * 180 / Math.PI
+      case (x, y)                   => Math.atan(y / x) * 180 / Math.PI
     }
   }
 
@@ -125,6 +193,4 @@ case class L2D(start: Pt2D, end: Pt2D, color: Color) {
     L2D(end, angle + deltaAngle, length * factor, c)
   }
 
-
 }
-
