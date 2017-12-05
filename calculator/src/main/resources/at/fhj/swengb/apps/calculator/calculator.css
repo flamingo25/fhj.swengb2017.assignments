@@ -2,9 +2,31 @@
 // see http://fxexperience.com/2011/12/styling-fx-buttons-with-css/
 
 #calculator {
-	-fx-background-color:#00ff00;
+	-fx-background-color: #5D5D5C;
 }
 
 #calculator .grey {
-	-fx-background-color:#ff00ff;
+	-fx-background-color:
+	        linear-gradient(#5D5D5C 0%, #5D5D5C 20%, #5D5D5C 80%, #5D5D5C 100%),
+		linear-gradient(#5D5D5C 0%, #5D5D5C 20%, #5D5D5C 80%, #5D5D5C 100%),
+		#D2CDC6;
+    	-fx-text-fill: #000000;
+	-fx-margin: 8 15 15 15;
 }
+
+#calculator .orange {
+	-fx-background-color:
+        	linear-gradient(#5D5D5C 0%, #5D5D5C 20%, #5D5D5C 80%, #5D5D5C 100%),
+		linear-gradient(#5D5D5C 0%, #5D5D5C 20%, #5D5D5C 80%, #5D5D5C 100%),
+		#F69A10;
+	-fx-text-fill: #FFFFFF;
+}
+
+#calculator .red {
+	-fx-background-color:
+        	linear-gradient(#5D5D5C 0%, #5D5D5C 20%, #5D5D5C 80%, #5D5D5C 100%),
+		linear-gradient(#5D5D5C 0%, #5D5D5C 20%, #5D5D5C 80%, #5D5D5C 100%),
+		#F60909;
+	-fx-text-fill: #FFFFFF;
+}
+

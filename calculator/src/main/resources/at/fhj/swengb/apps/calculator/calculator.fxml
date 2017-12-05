@@ -1,17 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.GridPane?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.control.TextField?>
-<GridPane id="calculator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-          prefHeight="500.0" prefWidth="500.0" styleClass="gridpane" xmlns="http://javafx.com/javafx/null"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.calculator.CalculatorFxController">
-    <children>
-    <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey"
-            text="+/-" GridPane.columnIndex="2" GridPane.rowIndex="2">
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-    </Button>
+<GridPane id="calculator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="400.0" styleClass="gridpane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.calculator.CalculatorFxController">
+    <children>
+    <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="3" GridPane.columnIndex="2" GridPane.rowIndex="7">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin></Button>
+      <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="200.0" styleClass="grey" stylesheets="@calculator.css" text="0" GridPane.columnSpan="2" GridPane.rowIndex="8">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="2" GridPane.columnIndex="1" GridPane.rowIndex="7">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="1" GridPane.rowIndex="7">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="," GridPane.columnIndex="2" GridPane.rowIndex="8">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="110.0" layoutY="310.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="6" GridPane.columnIndex="2" GridPane.rowIndex="6">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="110.0" layoutY="310.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="5" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="110.0" layoutY="210.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="4" GridPane.rowIndex="6">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="10.0" layoutY="210.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="9" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="210.0" layoutY="110.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="7" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="10.0" layoutY="110.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="grey" stylesheets="@calculator.css" text="8" GridPane.columnIndex="1" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button layoutX="210.0" layoutY="110.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="red" stylesheets="@calculator.css" text="\%" GridPane.columnIndex="2" GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="red" stylesheets="@calculator.css" text="C" GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="red" stylesheets="@calculator.css" text="+/-" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="red" stylesheets="@calculator.css" text="enter" GridPane.columnIndex="4" GridPane.rowIndex="8">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="orange" stylesheets="@calculator.css" text="+" GridPane.columnIndex="4" GridPane.rowIndex="7">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="orange" stylesheets="@calculator.css" text="-" GridPane.columnIndex="4" GridPane.rowIndex="6">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="orange" stylesheets="@calculator.css" text="×" GridPane.columnIndex="4" GridPane.rowIndex="5">
+         <font>
+            <Font name="System Bold" size="37.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" styleClass="orange" stylesheets="@calculator.css" text="÷" GridPane.columnIndex="4" GridPane.rowIndex="4">
+         <font>
+            <Font name="System Bold" size="41.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="5.0" top="5.0" />
+         </GridPane.margin>
+      </Button>
+      <TextField alignment="CENTER_RIGHT" prefHeight="40.0" promptText="1" styleClass="grey" stylesheets="@calculator.css" GridPane.columnSpan="5">
+         <font>
+            <Font size="23.0" />
+         </font>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </TextField>
+      <TextField alignment="CENTER_RIGHT" prefHeight="40.0" promptText="2" styleClass="grey" stylesheets="@calculator.css" GridPane.columnSpan="5" GridPane.rowIndex="1">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </TextField>
+      <TextField alignment="CENTER_RIGHT" layoutX="10.0" layoutY="36.0" prefHeight="40.0" promptText="3" styleClass="grey" stylesheets="@calculator.css" GridPane.columnSpan="5" GridPane.rowIndex="2">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </TextField>
     </children>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 
 </GridPane>
