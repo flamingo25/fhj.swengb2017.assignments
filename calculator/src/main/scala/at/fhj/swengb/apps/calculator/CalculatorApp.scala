@@ -56,18 +56,135 @@ class CalculatorFxController extends Initializable {
 
   def setCalculator(rpnCalculator : RpnCalculator) : Unit = calculatorProperty.set(rpnCalculator)
 
-  @FXML var numberTextField : TextField = _
+  @FXML var textOne : TextField = _
+  @FXML var textTwo : TextField = _
+  @FXML var textThree : TextField = _
 
   override def initialize(location: URL, resources: ResourceBundle) = {
 
   }
 
   def sgn(): Unit = {
-    getCalculator().push(Op(numberTextField.getText)) match {
+    getCalculator().push(Op(textOne.getText)) match {
       case Success(c) => setCalculator(c)
       case Failure(e) => // show warning / error
     }
     getCalculator().stack foreach println
+  }
+
+  def one() : Unit = {
+    textThree.appendText("1")
+
+  }
+
+  def two() : Unit = {
+    textThree.appendText("2")
+
+  }
+
+  def three() : Unit = {
+    textThree.appendText("3")
+
+  }
+
+  def four() : Unit = {
+    textThree.appendText("4")
+
+  }
+
+  def five() : Unit = {
+    textThree.appendText("5")
+
+  }
+
+  def six() : Unit = {
+    textThree.appendText("6")
+
+  }
+
+  def seven() : Unit = {
+    textThree.appendText("7")
+
+  }
+
+  def eight() : Unit = {
+    textThree.appendText("8")
+
+  }
+
+  def nine() : Unit = {
+    textThree.appendText("9")
+
+  }
+
+  def zero() : Unit = {
+    textThree.appendText("0")
+
+  }
+
+
+  def add() : Unit = {
+    textThree.appendText("+")
+
+  }
+
+  def subst() : Unit = {
+    textThree.appendText("-")
+
+  }
+
+  def multi() : Unit = {
+    textThree.appendText("*")
+
+  }
+
+  def change() : Unit = {
+    textThree.appendText("+/-")
+
+  }
+
+  def div() : Unit = {
+    textThree.appendText("/")
+
+  }
+
+  def comma() : Unit = {
+    textThree.appendText(",")
+
+  }
+
+  def stack() : Unit = {
+    textThree.appendText("STACK")
+
+  }
+
+  def calc() : Unit = {
+    if (textTwo.getText == "") {
+      textTwo.setText(textThree.getText)
+      textThree.setText("")
+    }
+
+      else if (textOne.getText == "" && textTwo.getText != "") {
+        textOne.setText (textTwo.getText)
+        textTwo.setText (textThree.getText)
+        textThree.setText("")
+      }
+
+
+
+  }
+
+  def perc() : Unit = {
+    textThree.appendText("%")
+
+  }
+
+
+  def ac() : Unit = {
+    textOne.setText("")
+    textTwo.setText("")
+    textThree.setText("")
+
   }
 
 
