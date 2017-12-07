@@ -27,9 +27,9 @@
 }
 
 Button:hover {
-    -fx-effect: innershadow( three-pass-box , rgba(100,100,100,0.7) , 20, 0.0 , 0 , 2 );
+    -fx-effect: innershadow( three-pass-box , rgba(100,100,100,0.7) , 20, 0.0, 0 , 10 );
 }
 
 Button:pressed {
-    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.50) , 20, 0.0 , 0 , 2 );
+    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.50) , 20, 0.0 , 0 , 12 );
 }

@@ -47,102 +47,138 @@ class CalculatorFX extends javafx.application.Application {
   }
 
 }
+
 class CalculatorFxController extends Initializable {
+
   val calculatorProperty: ObjectProperty[RpnCalculator] = new SimpleObjectProperty[RpnCalculator](RpnCalculator())
 
   def getCalculator() : RpnCalculator = calculatorProperty.get()
 
   def setCalculator(rpnCalculator : RpnCalculator) : Unit = calculatorProperty.set(rpnCalculator)
-  @FXML var textOne : TextField = _
-  @FXML var textTwo : TextField = _
-  @FXML var textThree : TextField = _
+
+  @FXML var firstTextField : TextField = _
+  @FXML var secondTextField : TextField = _
+  @FXML var thirdTextField : TextField = _
 
   override def initialize(location: URL, resources: ResourceBundle) = {
 
   }
 
-def sgn() : Unit = {
-  println("an event has happened")
-}
-def one() : Unit = {
-  println("Number 1 selected")
-}
-
-  def two() : Unit = {
-  println("Number 2 selected")
-}
-
-  def three() : Unit = {
-  println("Number 3 selected")
-}
-
-  def four() : Unit = {
-  println("Number 4 selected")
-}
-
-  def five() : Unit = {
-  println("Number 5 selected")
-}
-
-  def six() : Unit = {
-  println("Number 6 selected")
-}
-
-  def seven() : Unit = {
-  println("Number 7 selected")
-}
-
-  def eight() : Unit = {
-  println("Number 8 selected")
-}
-
-  def nine() : Unit = {
-  println("Number 9 selected")
-}
+  def sgn(): Unit = {
+    getCalculator().push(Op(firstTextField.getText)) match {
+      case Success(c) => setCalculator(c)
+      case Failure(e) => // show warning / error
+    }
+    getCalculator().stack foreach println
+  }
 
   def zero() : Unit = {
-  println("Number 0 selected")
-}
+    thirdTextField.appendText("0")
+
+  }
+
+  def one() : Unit = {
+    thirdTextField.appendText("1")
+
+  }
+
+  def two() : Unit = {
+    thirdTextField.appendText("2")
+
+  }
+
+  def three() : Unit = {
+    thirdTextField.appendText("3")
+
+  }
+
+  def four() : Unit = {
+    thirdTextField.appendText("4")
+
+  }
+
+  def five() : Unit = {
+    thirdTextField.appendText("5")
+
+  }
+
+  def six() : Unit = {
+    thirdTextField.appendText("6")
+
+  }
+
+  def seven() : Unit = {
+    thirdTextField.appendText("7")
+
+  }
+
+  def eight() : Unit = {
+    thirdTextField.appendText("8")
+
+  }
+
+  def nine() : Unit = {
+    thirdTextField.appendText("9")
+
+  }
 
   def add() : Unit = {
-  println("Operation + selected")
-}
+    thirdTextField.appendText("+")
+
+  }
 
   def subst() : Unit = {
-  println("Operation - selected")
-}
+    thirdTextField.appendText("-")
+
+  }
 
   def multi() : Unit = {
-  println("Operation x selected")
-}
+    thirdTextField.appendText("*")
+
+  }
 
   def change() : Unit = {
-  println("Butto +/- selected")
-}
+    thirdTextField.appendText("+/-")
+
+  }
 
   def div() : Unit = {
-  println("Operation / selected")
-}
+    thirdTextField.appendText("/")
+
+  }
 
   def comma() : Unit = {
-  println("Button , selected")
-}
+    thirdTextField.appendText(",")
 
-  def stack() : Unit = {
-  println("STACK-Button selected")
-}
+  }
+
 
   def calc() : Unit = {
-  println("Operation = selected")
-}
+    if (secondTextField.getText == "") {
+      secondTextField.setText(thirdTextField.getText)
+      thirdTextField.setText("")
+    }
+
+    else if (firstTextField.getText == "" && secondTextField.getText != "") {
+      firstTextField.setText (secondTextField.getText)
+      secondTextField.setText (thirdTextField.getText)
+      thirdTextField.setText("")
+    }
+  }
 
   def perc() : Unit = {
-  println("Operation % selected")
-}
+    thirdTextField.appendText("%")
+
+  }
 
 
   def ac() : Unit = {
-  println("AC clicked")
-}
+    firstTextField.setText("")
+    secondTextField.setText("")
+    thirdTextField.setText("")
+
+  }
+
 
 }
+
