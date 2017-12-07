@@ -19,7 +19,13 @@ class TimesheetSpec extends WordSpecLike {
     assert(expected == result)
     println(result)
   }
+    "work2" in {
+      //skeleton of a test
+
+      println(p)
+    }
 }
+
   val expected =
     """== Time expenditure: Calculator assignment
       |
