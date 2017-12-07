@@ -47,28 +47,102 @@ class CalculatorFX extends javafx.application.Application {
   }
 
 }
-
 class CalculatorFxController extends Initializable {
-
   val calculatorProperty: ObjectProperty[RpnCalculator] = new SimpleObjectProperty[RpnCalculator](RpnCalculator())
 
   def getCalculator() : RpnCalculator = calculatorProperty.get()
 
   def setCalculator(rpnCalculator : RpnCalculator) : Unit = calculatorProperty.set(rpnCalculator)
-
-  @FXML var numberTextField : TextField = _
+  @FXML var textOne : TextField = _
+  @FXML var textTwo : TextField = _
+  @FXML var textThree : TextField = _
 
   override def initialize(location: URL, resources: ResourceBundle) = {
 
   }
 
-  def sgn(): Unit = {
-    getCalculator().push(Op(numberTextField.getText)) match {
-      case Success(c) => setCalculator(c)
-      case Failure(e) => // show warning / error
-    }
-    getCalculator().stack foreach println
-  }
+def sgn() : Unit = {
+  println("an event has happened")
+}
+def one() : Unit = {
+  println("Number 1 selected")
+}
 
+  def two() : Unit = {
+  println("Number 2 selected")
+}
+
+  def three() : Unit = {
+  println("Number 3 selected")
+}
+
+  def four() : Unit = {
+  println("Number 4 selected")
+}
+
+  def five() : Unit = {
+  println("Number 5 selected")
+}
+
+  def six() : Unit = {
+  println("Number 6 selected")
+}
+
+  def seven() : Unit = {
+  println("Number 7 selected")
+}
+
+  def eight() : Unit = {
+  println("Number 8 selected")
+}
+
+  def nine() : Unit = {
+  println("Number 9 selected")
+}
+
+  def zero() : Unit = {
+  println("Number 0 selected")
+}
+
+  def add() : Unit = {
+  println("Operation + selected")
+}
+
+  def subst() : Unit = {
+  println("Operation - selected")
+}
+
+  def multi() : Unit = {
+  println("Operation x selected")
+}
+
+  def change() : Unit = {
+  println("Butto +/- selected")
+}
+
+  def div() : Unit = {
+  println("Operation / selected")
+}
+
+  def comma() : Unit = {
+  println("Button , selected")
+}
+
+  def stack() : Unit = {
+  println("STACK-Button selected")
+}
+
+  def calc() : Unit = {
+  println("Operation = selected")
+}
+
+  def perc() : Unit = {
+  println("Operation % selected")
+}
+
+
+  def ac() : Unit = {
+  println("AC clicked")
+}
 
 }

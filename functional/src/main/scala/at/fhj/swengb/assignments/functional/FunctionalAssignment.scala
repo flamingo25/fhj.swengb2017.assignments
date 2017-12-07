@@ -38,7 +38,11 @@ object FunctionalAssignment {
   // What did you gain with your new names? What did you loose?
   //
   /**
-    *
+    */
+
+  def op[A, B](list: Seq[A], acc: B)(func: (B, A) => B): B = list.foldLeft(acc)(func)
+
+  /**
     * @param list a value of the data type list.
     * @param acc accumulator carried and extended during executing the function.
     * @param func a function taking the accumulator and the content of the list as two valid parameters.
@@ -58,10 +62,7 @@ object FunctionalAssignment {
     *  unterschiedlichen Typs sind.
     *  Nur die Variable "b" wurde unpassend benannt, da nicht gleich klar wird, dass es ein Akkumulator ist. Eine
     *  bessere Bezeichnung wäre zum Beispiel "acc".
-    */
-  def op[A, B](list: Seq[A], acc: B)(func: (B, A) => B): B = list.foldLeft(acc)(func)
-
-  /**
+    *
     * implement the summation of the given numbers parameter.
     * Use the function 'op' defined above.
     *
