@@ -19,7 +19,9 @@ object Op {
       case "-" => Sub
       case "+" => Add
       case "/" => Div
+      case "%" => Percent
       case value => Val(value.toDouble)
+
     }
   }
 
@@ -51,7 +53,13 @@ case object Mul extends BinOp {
   * a Val(Double.NaN) shoudl be returned.
   */
 case object Div extends BinOp {
-  override def eval(left: Val, right: Val): Val = ???
+  override def eval(left: Val, right: Val): Val = {
+    if (right.value == 0.0)
+      Val(Double.NaN)
+    else
+      Val(left.value / right.value)
+  }
+
 }
 
 /**
@@ -66,4 +74,14 @@ case object Add extends BinOp {
   */
 case object Sub extends BinOp {
   override def eval(left: Val, right: Val): Val = Val(left.value - right.value)
+}
+
+
+
+
+/**
+  * Represents Percent operation
+  */
+case object Percent extends BinOp {
+  override def eval(left:Val, right:Val): Val = Val(left.value/100*right.value)
 }

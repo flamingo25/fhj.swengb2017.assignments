@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane id="calculator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="420.0" style="-fx-background-color: #585858;" styleClass="gridpane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.calculator.CalculatorFxController">
+<GridPane id="calculator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="450.0" style="-fx-background-color: #000000;" styleClass="gridpane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.calculator.CalculatorFxController">
     <children>
         <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#two" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #900c3f; -fx-text-fill: white; -fx-background-radius: 100;" styleClass="grey" text="2" GridPane.columnIndex="2" GridPane.rowIndex="18">
             <font>
@@ -43,26 +43,26 @@
         </Button>
         <Button layoutX="110.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#div" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffcc39; -fx-background-radius: 100;" styleClass="grey" text="÷" GridPane.columnIndex="4" GridPane.rowIndex="12">
             <font>
-                <Font name="System Bold" size="21.0" />
+                <Font name="System Bold" size="33.0" />
             </font>
          <GridPane.margin>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+            <Insets bottom="2.0" left="2.0" right="2.0" top="6.0" />
          </GridPane.margin>
         </Button>
-        <Button layoutX="110.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ac" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffcc39; -fx-background-radius: 100;" styleClass="grey" text="AC" GridPane.rowIndex="12">
+        <Button layoutX="110.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#ac" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffcc39; -fx-background-radius: 100;" styleClass="grey" text="C" GridPane.rowIndex="12">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>
          <GridPane.margin>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+            <Insets bottom="2.0" left="2.0" right="2.0" top="6.0" />
          </GridPane.margin>
         </Button>
-        <Button layoutX="110.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffcc39; -fx-background-radius: 100;" styleClass="grey" text="+/-" GridPane.columnIndex="2" GridPane.rowIndex="12">
+        <Button layoutX="110.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#change" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffcc39; -fx-background-radius: 100;" styleClass="grey" text="+/-" GridPane.columnIndex="2" GridPane.rowIndex="12">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>
          <GridPane.margin>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+            <Insets bottom="2.0" left="2.0" right="2.0" top="6.0" />
          </GridPane.margin>
         </Button>
         <Button layoutX="110.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#perc" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffcc39; -fx-background-radius: 100;" styleClass="grey" text="\%" GridPane.columnIndex="3" GridPane.rowIndex="12">
@@ -70,7 +70,7 @@
                 <Font name="System Bold" size="21.0" />
             </font>
          <GridPane.margin>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+            <Insets bottom="2.0" left="2.0" right="2.0" top="6.0" />
          </GridPane.margin>
         </Button>
         <Button layoutX="110.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#seven" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ff5739; -fx-text-fill: white; -fx-background-radius: 100;" styleClass="grey" text="7" GridPane.rowIndex="13">
@@ -137,12 +137,12 @@
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </GridPane.margin>
         </Button>
-        <TextField fx:id="textOne" alignment="CENTER_RIGHT" editable="false" prefHeight="86.0" prefWidth="420.0" style="-fx-border-color: #ffffff; -fx-border-style: bridge;" GridPane.columnSpan="5" GridPane.rowIndex="5">
+        <TextField fx:id="textOne" alignment="CENTER_RIGHT" editable="false" prefHeight="75.0" prefWidth="420.0" style="-fx-background-radius: 5; -fx-background-color: #9c9c9c;" GridPane.columnSpan="5" GridPane.rowIndex="5">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>
         </TextField>
-        <Button layoutX="312.0" layoutY="446.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#comma" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #581845; -fx-text-fill: white; -fx-background-radius: 100;" styleClass="grey" text="," GridPane.columnIndex="2" GridPane.rowIndex="19">
+        <Button layoutX="312.0" layoutY="446.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#comma" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #581845; -fx-text-fill: white; -fx-background-radius: 100;" styleClass="grey" text="," GridPane.columnIndex="3" GridPane.rowIndex="19">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>
@@ -150,7 +150,7 @@
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </GridPane.margin>
         </Button>
-        <Button layoutX="112.0" layoutY="446.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#zero" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #581845; -fx-text-fill: white; -fx-background-radius: 100;" styleClass="grey" text="0" GridPane.columnSpan="3" GridPane.rowIndex="19">
+        <Button layoutX="112.0" layoutY="446.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#zero" prefHeight="100.0" prefWidth="203.0" style="-fx-background-color: #581845; -fx-text-fill: white; -fx-background-radius: 100;" styleClass="grey" text="0" GridPane.columnSpan="5" GridPane.rowIndex="19">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>
@@ -166,20 +166,12 @@
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </GridPane.margin>
         </Button>
-        <Button layoutX="10.0" layoutY="515.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stack" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #581845; -fx-text-fill: white; -fx-background-radius: 100;" styleClass="grey" text="STACK" GridPane.columnIndex="3" GridPane.rowIndex="19">
-            <font>
-                <Font name="System Bold" size="21.0" />
-            </font>
-         <GridPane.margin>
-            <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-         </GridPane.margin>
-        </Button>
-      <TextField fx:id="textTwo" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="42.0" prefHeight="80.0" prefWidth="420.0" style="-fx-border-color: #ffffff; -fx-border-style: bridge;" GridPane.columnSpan="5" GridPane.rowIndex="10">
+      <TextField fx:id="textTwo" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="42.0" prefHeight="75.0" prefWidth="420.0" style="-fx-background-radius: 5; -fx-background-color: #9c9c9c;" GridPane.columnSpan="5" GridPane.rowIndex="10">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </TextField>
-      <TextField fx:id="textThree" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="42.0" prefHeight="80.0" prefWidth="420.0" style="-fx-border-color: #ffffff; -fx-border-style: bridge;" GridPane.columnSpan="5" GridPane.rowIndex="11">
+      <TextField fx:id="textThree" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="42.0" prefHeight="75.0" prefWidth="420.0" style="-fx-background-radius: 5; -fx-background-color: #9c9c9c;" GridPane.columnSpan="5" GridPane.rowIndex="11">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -198,14 +190,14 @@
         <RowConstraints />
         <RowConstraints />
         <RowConstraints />
-        <RowConstraints maxHeight="32.0" minHeight="4.0" prefHeight="31.0" />
-        <RowConstraints maxHeight="103.0" minHeight="75.0" prefHeight="75.0" />
+        <RowConstraints maxHeight="32.0" minHeight="0.0" prefHeight="0.0" />
+        <RowConstraints maxHeight="103.0" minHeight="75.0" prefHeight="82.0" />
         <RowConstraints />
         <RowConstraints />
         <RowConstraints />
         <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
-        <RowConstraints maxHeight="79.33741760253906" minHeight="30.0047607421875" prefHeight="75.0" />
-        <RowConstraints maxHeight="91.9952392578125" minHeight="44.389739990234375" prefHeight="75.0" />
+        <RowConstraints maxHeight="79.33741760253906" minHeight="30.0047607421875" prefHeight="82.0" />
+        <RowConstraints maxHeight="91.9952392578125" minHeight="44.389739990234375" prefHeight="82.0" />
         <RowConstraints />
         <RowConstraints />
         <RowConstraints />
@@ -218,5 +210,8 @@
     <opaqueInsets>
         <Insets />
     </opaqueInsets>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
 
 </GridPane>

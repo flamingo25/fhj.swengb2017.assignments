@@ -64,13 +64,36 @@ class CalculatorFxController extends Initializable {
 
   }
 
-  def sgn(): Unit = {
-    getCalculator().push(Op(textOne.getText)) match {
-      case Success(c) => setCalculator(c)
-      case Failure(e) => // show warning / error
+    def calc(): Unit = {
+      getCalculator().push(Op(textThree.getText)) match {
+        case Success(c) => setCalculator(c)
+        case Failure(e) => // show warning / error
+      }
+
+
+      /*  Wenn Stack size kleiner als 2 --> textOne nicht befüllen
+
+
+      if (getCalculator().stack.size < 2)      {
+        (textTwo.setText(getCalculator().stack(0).toString.drop(4).init))
+        textThree.setText("")
+      }
+      else {
+
+      }
+         */
+       
+
+      getCalculator().stack foreach println
+
+
+      (textTwo.setText(getCalculator().stack(0).toString.drop(4).init))
+      textThree.setText("")
+      (textOne.setText(getCalculator().stack(1).toString.drop(4).init))
+      textThree.setText("")
     }
-    getCalculator().stack foreach println
-  }
+
+
 
   def one() : Unit = {
     textThree.appendText("1")
@@ -139,9 +162,10 @@ class CalculatorFxController extends Initializable {
   }
 
   def change() : Unit = {
-    textThree.appendText("+/-")
+    textTwo.setText("-" ++ textTwo.getText())
 
   }
+
 
   def div() : Unit = {
     textThree.appendText("/")
@@ -149,34 +173,13 @@ class CalculatorFxController extends Initializable {
   }
 
   def comma() : Unit = {
-    textThree.appendText(",")
+    textThree.appendText(".")
 
   }
 
-  def stack() : Unit = {
-    textThree.appendText("STACK")
-
-  }
-
-  def calc() : Unit = {
-    if (textTwo.getText == "") {
-      textTwo.setText(textThree.getText)
-      textThree.setText("")
-    }
-
-      else if (textOne.getText == "" && textTwo.getText != "") {
-        textOne.setText (textTwo.getText)
-        textTwo.setText (textThree.getText)
-        textThree.setText("")
-      }
-
-
-
-  }
 
   def perc() : Unit = {
     textThree.appendText("%")
-
   }
 
 
@@ -189,3 +192,4 @@ class CalculatorFxController extends Initializable {
 
 
 }
+

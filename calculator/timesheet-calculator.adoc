@@ -7,16 +7,41 @@
 | Hours
 | Description
 
-| 29.11.17
-| 1
-| Review of this and that
-
-| 30.11.17
-| 5
-| implemented css
-
-| 11.07.17
+| 1.12.17
 | 2
-| fixed bugs
+| GUI Design (Scene Builder)
+
+| 2.12.17
+| 3
+| Tried to find out how to solve this task
+
+| 4.12.17
+| 4
+| tried to implement functions
+
+| 5.12.17
+| 1
+| Changing GUI
+
+| 6.12.17
+| 3
+| Thinking about new files + trying
+
+| 7.12.17
+| 2
+| RpnCalculator - Tried to solve the first and second task
+
+| 8.12.17
+| 1
+| Solved Task: DIV Operation
+
+| 8.12.17
+| 0.5
+| Research and implementing Peek & Size (& Hoping that this is right)
+
+| 11.12.17
+| 6
+| Research + RpnCalculator (Apply, Push, Pop + trying to implement WORKING buttons
+
 
 |===
