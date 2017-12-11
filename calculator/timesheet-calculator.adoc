@@ -7,16 +7,24 @@
 | Hours
 | Description
 
-| 29.11.17
-| 1
-| Review of this and that
-
-| 30.11.17
+| 07.12.17
 | 5
-| implemented css
+| implemented css and fxml
 
-| 11.07.17
-| 2
-| fixed bugs
+| 08.12.17
+| 4
+| Review of the calculator
+
+| 09.12.17
+| 4
+| push function
+
+| 10.12.17
+| 5
+| other funtions
+
+| 11.12.17
+| 3
+| Failure instance
 
 |===
