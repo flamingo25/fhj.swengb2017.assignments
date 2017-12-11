@@ -10,7 +10,7 @@
 
 <GridPane id="calculator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="742.0" prefWidth="405.0" style="-fx-background-color: #ff5c33;" styleClass="gridpane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.calculator.CalculatorFxController">
     <children>
-        <TextField fx:id="firstTextField" alignment="CENTER_RIGHT" editable="false" prefHeight="75.0" prefWidth="405.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-background-radius: 20;" GridPane.columnSpan="5" GridPane.rowIndex="5">
+        <TextField fx:id="firstTextField" alignment="CENTER_RIGHT" editable="false" prefHeight="75.0" prefWidth="405.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-background-radius: 20; -fx-border-color: #000000;" GridPane.columnSpan="5" GridPane.rowIndex="5">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>
@@ -21,7 +21,7 @@
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </GridPane.margin>
         </TextField>
-        <TextField fx:id="secondTextField" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="42.0" prefHeight="75.0" prefWidth="405.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-background-radius: 20;" GridPane.columnSpan="5" GridPane.rowIndex="10">
+        <TextField fx:id="secondTextField" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="42.0" prefHeight="75.0" prefWidth="405.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-background-radius: 20; -fx-border-color: #000000;" GridPane.columnSpan="5" GridPane.rowIndex="10">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>
@@ -32,7 +32,7 @@
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </GridPane.margin>
         </TextField>
-        <TextField fx:id="thirdTextField" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="42.0" prefHeight="75.0" prefWidth="405.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-background-radius: 20;" GridPane.columnSpan="5" GridPane.rowIndex="11">
+        <TextField fx:id="thirdTextField" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="42.0" prefHeight="75.0" prefWidth="405.0" style="-fx-background-color: #ffffff; -fx-text-fill: #000000; -fx-background-radius: 20; -fx-border-color: #000000;" GridPane.columnSpan="5" GridPane.rowIndex="11">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>
@@ -90,7 +90,7 @@
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
          </GridPane.margin>
         </Button>
-        <Button layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ff9980; -fx-background-radius: 50;" styleClass="grey" text="+/-" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="12">
+        <Button layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onAction="#plusminus" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ff9980; -fx-background-radius: 50;" styleClass="grey" text="+/-" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="12">
             <font>
                 <Font name="System Bold" size="21.0" />
             </font>

@@ -64,12 +64,17 @@ class CalculatorFxController extends Initializable {
 
   }
 
-  def sgn(): Unit = {
-    getCalculator().push(Op(firstTextField.getText)) match {
+  def calc(): Unit = {
+    getCalculator().push(Op(thirdTextField.getText)) match {
       case Success(c) => setCalculator(c)
-      case Failure(e) => // show warning / error
+      case Failure(e) => // show warning or/and error
     }
     getCalculator().stack foreach println
+
+    (secondTextField.setText(getCalculator().stack(0).toString.drop(4).init))
+    thirdTextField.setText("")
+    (firstTextField.setText(getCalculator().stack(1).toString.drop(4).init))
+    thirdTextField.setText("")
   }
 
   def zero() : Unit = {
@@ -137,8 +142,8 @@ class CalculatorFxController extends Initializable {
 
   }
 
-  def change() : Unit = {
-    thirdTextField.appendText("+/-")
+  def plusminus() : Unit = {
+    secondTextField.setText("-" ++ secondTextField.getText())
 
   }
 
@@ -148,23 +153,10 @@ class CalculatorFxController extends Initializable {
   }
 
   def comma() : Unit = {
-    thirdTextField.appendText(",")
+    thirdTextField.appendText(".")
 
   }
 
-
-  def calc() : Unit = {
-    if (secondTextField.getText == "") {
-      secondTextField.setText(thirdTextField.getText)
-      thirdTextField.setText("")
-    }
-
-    else if (firstTextField.getText == "" && secondTextField.getText != "") {
-      firstTextField.setText (secondTextField.getText)
-      secondTextField.setText (thirdTextField.getText)
-      thirdTextField.setText("")
-    }
-  }
 
   def perc() : Unit = {
     thirdTextField.appendText("%")

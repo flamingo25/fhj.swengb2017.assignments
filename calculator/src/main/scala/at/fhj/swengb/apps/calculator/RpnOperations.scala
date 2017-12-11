@@ -19,6 +19,7 @@ object Op {
       case "-" => Sub
       case "+" => Add
       case "/" => Div
+      case "%" => Precentage
       case value => Val(value.toDouble)
     }
   }
@@ -48,22 +49,32 @@ case object Mul extends BinOp {
 
 /**
   * A case class representing division. Be aware that you have to think about the division through zero. In this case,
-  * a Val(Double.NaN) shoudl be returned.
+  * a Val(Double.NaN) should be returned.
   */
 case object Div extends BinOp {
-  override def eval(left: Val, right: Val): Val = ???
+  override def eval(left: Val, right: Val): Val = {
+    if (right.value != 0.0) {
+      Val(left.value / right.value)
+    }
+    else {
+      Val(Double.NaN)
+    }
+  }
 }
-
 /**
   * this object represents the addition operation.
   */
 case object Add extends BinOp {
   override def eval(left: Val, right: Val): Val = Val(left.value + right.value)
-}
+ }
 
 /**
   * Represents the substraction operation.
   */
 case object Sub extends BinOp {
   override def eval(left: Val, right: Val): Val = Val(left.value - right.value)
+}
+
+case object Precentage extends BinOp {
+  override def eval(left: Val, right: Val): Val = Val(left.value/100*right.value)
 }

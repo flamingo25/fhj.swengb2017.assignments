@@ -7,16 +7,46 @@
 | Hours
 | Description
 
-| 29.11.17
-| 1
-| Review of this and that
+| 02.12.2017
+| 3
+| Analysis of the task overview + Brainstorming + Research
+| Answering the question: "How am I going to start?"
 
-| 30.11.17
+
+| 03.12.2017
 | 5
-| implemented css
+| Working on the design, buttons finished
 
-| 11.07.17
+| 04.12.2017
 | 2
-| fixed bugs
+| Redesigning the calculator, implementing more complex css settings
+
+| 05.12.2017
+| 4
+| Creating of text fields and redefining the CalculatorApp (pushing the pressed buttons into the text fields)
+
+| 06.12.2017
+| 3
+| Design finished, first three tests passed
+
+| 07.12.2017
+| 6
+| Case defining: "Percentage" and "Div" in RpnOperations.scala
+
+| 08.12.2017
+| 8
+| Defining of push and apply functions in RpnCalculator.scala
+
+| 09.12.2017
+| 5
+| Defining of pop and peek functions in RpnCalculator.scala
+
+| 10.12.2017
+| 4
+| Improving CalculatorApp.scala by implementing more complex rules which are applied to Textfields
+
+| 11.12.2017
+| 3
+| Trying to solve bugs, ExceptionErrors?
 
 |===
