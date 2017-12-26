@@ -61,5 +61,8 @@ class BattleShipFxController extends Initializable {
 
     BattleShipGame(battleField, getCellWidth, getCellHeight, appendLog)
   }
+  def loadGame (): Unit = initGame()
+
+  def saveGame (): Unit = initGame()
 
 }

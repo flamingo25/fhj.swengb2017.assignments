@@ -20,6 +20,8 @@ case class BattleShipGame(battleField: BattleField,
     */
   var sunkShips: Set[Vessel] = Set()
 
+  var clickedPositions: Set[BattlePos] = Set()
+
   /**
     * We don't ever change cells, they should be initialized only once.
     */

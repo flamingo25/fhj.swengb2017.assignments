@@ -8,6 +8,27 @@ option java_outer_classname = "BattleShipProtobuf";
 
 message BattleShipGame {
 
-    // TODO
+    enum VesselDirection {
+        Vertical = 0;
+        Horizontal = 1;
+    }
+
+    message Vessel {
+            string name = 1;
+            int32 size = 2;
+            VesselDirection orientation = 3;
+            Position startPos = 4;
+        }
+
+    message Position {
+        int32 y = 1;
+        int32 x = 2;
+    }
+
+
+    int32 fieldHeight = 1;
+    int32 fieldWidth = 2;
+    repeated Vessel vessels = 3;
+    repeated Position clickedPositions= 4;
 
 }
