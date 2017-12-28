@@ -1,130 +1,86 @@
 package at.fhj.swengb.apps.battleship
 
-import at.fhj.swengb.apps.battleship.BattleShipProtobuf.BattleShipGame.{Position, Vessel, VesselOrientation}
+
 import at.fhj.swengb.apps.battleship.model._
+
 import scala.collection.JavaConverters._
 
 object BattleShipProtocol {
 
+  def convert(battlePos: BattleShipProtobuf.BattlePos): BattlePos = BattlePos(battlePos.getX, battlePos.getY)
+
+  def convert(battlePos: BattlePos): BattleShipProtobuf.BattlePos = BattleShipProtobuf.BattlePos.newBuilder().setX(battlePos.x).setY(battlePos.y).build()
+
   def convert(g : BattleShipGame) : BattleShipProtobuf.BattleShipGame = {
-    //Create Protobuf Battlefield
-    val protoBattleField = BattleShipProtobuf.BattleShipGame
-      .newBuilder()
-      .setFieldWidth(g.battleField.width)
-      .setFieldHeight(g.battleField.height)
+    val convertOrder = g.clicks.map(x => convert(x))
+    val protobufGame = BattleShipProtobuf.BattleShipGame.newBuilder().setBattlefield(convert(g.battleField))
 
-    //Convert vessesls to protobuf-Vessels and add it
-    val fleetProtobuf: Set[Vessel] =
-      g.battleField.fleet.vessels.map(e => convert(e))
-    fleetProtobuf.foreach(e => protoBattleField.addVessels(e))
-
-    //Convert set of BattleBos to Protobuf clicked positions add add it
-    val clickedPos =
-      g.clickedPositions.map(e => convert(e))
-    clickedPos.foreach(e => protoBattleField.addClickedPositions(e))
-
-    //Build battlefield and write to file
-    protoBattleField.build()
+    convertOrder.map(x => protobufGame.addOrder(x))
+    protobufGame.build()
   }
 
-  def convert(g : BattleShipProtobuf.BattleShipGame) : BattleShipGame = {
-    //Create data for BattleField
-    val fleet: Fleet = Fleet( g.getVesselsList.asScala
-      .map(e => convert(e))
-      .toSet)
-
-    val battleField = BattleField(g.getFieldWidth, g.getFieldHeight, fleet)
-
-    //Create set of alread clicked positions
-    val clickedPos: Set[BattlePos] =
-      g.getClickedPositionsList.asScala
-        .map(e => convert(e))
-        .toSet
-
-    //Create BattleshipGame
-    BattleShipGame(battleField,(e=> e.toDouble),(e => e.toDouble), (e => println(e)))
+  def convert(vessel: BattleShipProtobuf.Vessel): Vessel = {
+    val vesselDirection: Direction = {
+      vessel.getDirection match {
+        case BattleShipProtobuf.Direction.Horizontal => Horizontal
+        case BattleShipProtobuf.Direction.Vertical => Vertical
+      }
+    }
+    Vessel(NonEmptyString(vessel.getName), convert(vessel.getStartPos), vesselDirection, vessel.getSize)
   }
 
 
-
-  /**
-    * Convertes a given Battleship-Game Vessel to an Protobuf Vessel to store
-    *
-    * @param vessel
-    * @return
-    */
-  // Previous convertVesseltoProtobufVessel
-  def convert(vessel: at.fhj.swengb.apps.battleship.model.Vessel): Vessel = {
-
-    val vesselOrientation = {
+  def convert(vessel: Vessel): BattleShipProtobuf.Vessel = {
+    val vesselDirection = {
       vessel.direction match {
-        case Horizontal => VesselOrientation.Horizontal;
-        case Vertical => VesselOrientation.Vertical;
-        case _ => ??? /*When this happens, some crazy shit is going on... */
+        case Horizontal => BattleShipProtobuf.Direction.Horizontal
+        case Vertical => BattleShipProtobuf.Direction.Vertical
       }
     }
 
-    //Create new protobuf Vessel
-    Vessel
+    BattleShipProtobuf.Vessel
       .newBuilder()
       .setName(vessel.name.value)
+      .setStartPos(convert(vessel.startPos))
+      .setDirection(vesselDirection)
       .setSize(vessel.size)
-      .setOrientation(vesselOrientation)
-      .setStartPos(
-        Position
-          .newBuilder()
-          .setX(vessel.startPos.x)
-          .setY(vessel.startPos.y)
-          .build())
       .build()
   }
 
-  /**
-    * Convert a Protobuf Vessel to a BattleShipGame Vessel
-    *
-    * @param vessel
-    * @return
-    */
-  //Previous convertProtobufVesseltoVessel
-  def convert(vessel: Vessel): at.fhj.swengb.apps.battleship.model.Vessel = {
 
-    val name: NonEmptyString = NonEmptyString(vessel.getName)
-    val startPos: BattlePos =
-      BattlePos(vessel.getStartPos.getX, vessel.getStartPos.getY)
-    val size = vessel.getSize
-    val direction: Direction = vessel.getOrientation match {
-      case VesselOrientation.Horizontal => Horizontal
-      case VesselOrientation.Vertical => Vertical
-      case _ => ???
-    }
-
-    //Create Battleship Vessel and return it.
-    at.fhj.swengb.apps.battleship.model.Vessel(name, startPos, direction, size)
-  }
-
-  /**
-    * Generates a Protobuf Position from given BattlePos possiton
-    *
-    * @param battlePos
-    * @return
-    */
-  //Previous convertBattlePosToProtobufPosition
-  private def convert(battlePos: BattlePos): Position = {
-    Position
+  def convert(battleField: BattleField): BattleShipProtobuf.BattleField = {
+    BattleShipProtobuf.BattleField
       .newBuilder()
-      .setX(battlePos.x)
-      .setY(battlePos.y)
+      .setWidth(battleField.width)
+      .setHeight(battleField.height)
+      .setFleet(convert(battleField.fleet))
       .build()
   }
 
-  /** Converts a Protobuf Position to a BattleShipGame BattlePos
-    *
-    * @param position
-    * @return
-    */
-  //previous convertProtoBufPositionToBattlePos
-  private def convert(position: Position): BattlePos = {
-    BattlePos(position.getX, position.getY)
+
+  def convert(battleField: BattleShipProtobuf.BattleField): BattleField = BattleField(battleField.getWidth, battleField.getHeight, convert(battleField.getFleet))
+
+  def convert(fleet: BattleShipProtobuf.Fleet): Fleet = Fleet(fleet.getVesselsList.asScala.map(x => convert(x)).toSet)
+
+  def convert(fleet: Fleet): BattleShipProtobuf.Fleet = {
+    val convertedVessels = fleet.vessels.map(x => convert(x))
+    val pFleet = BattleShipProtobuf.Fleet.newBuilder()
+
+    convertedVessels.map(x => pFleet.addVessels(x))
+    pFleet.build()
   }
 
+
+  def convert(g : BattleShipProtobuf.BattleShipGame) : BattleShipGame = {
+    val convertOrder = g.getOrderList.asScala.map(x => convert(x)).toList
+    val someMagic = BattleShipGame(
+      convert(g.getBattlefield),
+      x => x.toDouble,
+      x => x.toDouble,
+      x => ()
+    )
+    someMagic.clicks = convertOrder
+    someMagic
+
+  }
 }

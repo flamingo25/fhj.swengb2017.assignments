@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -16,16 +15,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="540.0" prefWidth="752.0" style="-fx-background-color: #d3d3d3;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.battleship.jfx.BattleShipFxController">
+<BorderPane prefHeight="540.0" prefWidth="752.0" style="-fx-background-color: #999999;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.battleship.jfx.BattleShipFxController">
     <right>
 
 
     </right>
     <top>
-        <Label prefHeight="51.0" prefWidth="128.0" text="Battleship" BorderPane.alignment="CENTER">
+        <Label prefHeight="62.0" prefWidth="309.0" text="BATTLESHIP" BorderPane.alignment="CENTER">
             <font>
-                <Font name="Segoe Print Bold" size="24.0" />
+                <Font name="Jokerman" size="36.0" />
             </font>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+         <effect>
+            <DropShadow color="#00000080" />
+         </effect>
         </Label>
     </top>
     <right>
@@ -91,16 +96,14 @@
          </BorderPane.margin>
         </GridPane>
     </center>
-   <left>
-        <TextArea fx:id="log" prefHeight="489.0" prefWidth="128.0" BorderPane.alignment="CENTER">
+   <effect>
+      <InnerShadow />
+   </effect>
+   <bottom>
+        <TextArea fx:id="log" prefHeight="122.0" prefWidth="752.0" BorderPane.alignment="CENTER">
          <effect>
             <InnerShadow />
-         </effect></TextArea>
-   </left>
-   <bottom>
-      <Slider prefHeight="69.0" prefWidth="752.0" BorderPane.alignment="CENTER">
-         <effect>
-            <DropShadow />
-         </effect></Slider>
+         </effect>
+      </TextArea>
    </bottom>
 </BorderPane>

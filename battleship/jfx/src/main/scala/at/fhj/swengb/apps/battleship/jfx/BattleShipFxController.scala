@@ -1,12 +1,16 @@
 package at.fhj.swengb.apps.battleship.jfx
 
 import java.net.URL
+import java.nio.file.Files
 import java.util.ResourceBundle
 import javafx.fxml.{FXML, Initializable}
 import javafx.scene.control.TextArea
 import javafx.scene.layout.GridPane
+import javafx.stage.FileChooser
 
-import at.fhj.swengb.apps.battleship.model.{BattleField, BattleShipGame, Fleet, FleetConfig}
+import at.fhj.swengb.apps.battleship
+import at.fhj.swengb.apps.battleship.model._
+import at.fhj.swengb.apps.battleship.{BattleShipProtobuf, BattleShipProtocol}
 
 
 class BattleShipFxController extends Initializable {
@@ -21,6 +25,8 @@ class BattleShipFxController extends Initializable {
 
   @FXML
   def newGame(): Unit = initGame()
+
+  var currentGame: BattleShipGame = _
 
   override def initialize(url: URL, rb: ResourceBundle): Unit = initGame()
 
@@ -39,18 +45,19 @@ class BattleShipFxController extends Initializable {
     * - placing your ships at random on the battleground
     *
     */
-  def init(game : BattleShipGame) : Unit = {
+  def init(game: BattleShipGame, clicks: List[BattlePos]) : Unit = {
     battleGroundGridPane.getChildren.clear()
     for (c <- game.getCells) {
       battleGroundGridPane.add(c, c.pos.x, c.pos.y)
     }
     game.getCells().foreach(c => c.init)
+    game.loadOrder(clicks)
   }
 
 
   private def initGame(): Unit = {
-    val game: BattleShipGame = createGame()
-    init(game)
+    currentGame = createGame()
+    init(currentGame, List())
     appendLog("New game started.")
   }
 
@@ -61,8 +68,29 @@ class BattleShipFxController extends Initializable {
 
     BattleShipGame(battleField, getCellWidth, getCellHeight, appendLog)
   }
-  def loadGame (): Unit = initGame()
 
-  def saveGame (): Unit = initGame()
+  def saveGame(): Unit = {
+    val fileChooser = new FileChooser
+    fileChooser.setInitialFileName("Saving Game")
+    fileChooser.setInitialFileName("BattleShip Game")
+    val selectedFile = fileChooser.showSaveDialog(null)
+    if (selectedFile != null) {
+      val current = BattleShipProtocol.convert(currentGame)
+      current.writeTo(Files.newOutputStream(selectedFile.toPath))
+    }
+  }
 
+  def loadGame(): Unit = {
+    val fileChooser = new FileChooser
+    fileChooser.setInitialFileName("Loading Game")
+    fileChooser.setInitialFileName("BattleShip Game")
+    val selectedFile = fileChooser.showOpenDialog(null)
+    if (selectedFile != null) {
+      val loadingGame = BattleShipProtobuf.BattleShipGame.parseFrom(Files.newInputStream(selectedFile.toPath))
+      val convertingLoadedGame = BattleShipProtocol.convert(loadingGame)
+      currentGame = BattleShipGame(convertingLoadedGame.battleField, getCellHeight, getCellHeight, appendLog)
+      init(currentGame, convertingLoadedGame.clicks)
+    }
+
+  }
 }

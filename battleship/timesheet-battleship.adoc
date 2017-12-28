@@ -38,7 +38,7 @@
 | out that the destination file is the “BattleShipFxController.scala”. Our first thoughts were that we need to implement
 | a Serializable interface in order to convert an objects state to a byte stream so that the stream can be reverted back
 | into a copy of the object. Then write the object to a file and afterwards read the file back again. This part we
-| implemented in a new Java Class called SaveGame combined with another Java Class RessourceManager. This variation
+| implemented in a new Java Class called SaveSerializable combined with another Java Class SomeMagic. This variation
 | appears to be very complex, reducing the performance of the application (this is the reason why we probably won't
 | implement theese classes in the final version of the project).
 | After a longer search we figured out that also the file “BattleShipGame.scala” is essential for a successful
@@ -52,5 +52,20 @@
 | First try to implement a .proto file. Our online research gave us some hints, including the prediction that the .proto
 | file is a subjective and individually build but very important part of the project. We will be working more on this
 | file to produce an effective and working version.
+| Ongoing search for a solution to the Save/Load - Task
+
+| Huetters16, Krnavkov16
+| 27.12.17
+| 2
+| 3,5
+| Creating the Persistence Protocol in order to explain our decisions towards our .proto file and to describe our
+| thoughts. What makes Protocol buffers such a powerful feature?
+| Fixing bugs with the wish to get a functional Save and Load button.
+
+|
+|
+|
+|
+|
 
 |===

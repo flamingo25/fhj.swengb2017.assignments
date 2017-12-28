@@ -14,7 +14,8 @@ case class BattleFxCell(pos: BattlePos
                         , log: String => Unit
                         , someVessel: Option[Vessel] = None
                         , fn: (Vessel, BattlePos) => Unit
-                        ) extends Rectangle(width, height) {
+                        , clicked: BattlePos => Unit
+                       ) extends Rectangle(width, height) {
 
   def init(): Unit = {
     if (someVessel.isDefined) {
@@ -25,15 +26,21 @@ case class BattleFxCell(pos: BattlePos
   }
 
   setOnMouseClicked(e => {
-    someVessel match {
-      case None =>
-        log(s"Missed. Try it again!")
-        setFill(Color.DODGERBLUE)
-      case Some(v) =>
-        log(s"Hit an enemy vessel!!")
-        fn(v, pos)
-        setFill(Color.DARKRED)
-    }
+    mouseClick
   })
 
+  def mouseClick() = {
+    someVessel match {
+      case None =>
+        log(s"Missed. Try it again.")
+        setFill(Color.DODGERBLUE)
+        clicked(pos)
+      case Some(v) =>
+        log(s"Hit an enemy vessel!")
+        fn(v, pos)
+        setFill(Color.DARKRED)
+        clicked(pos)
+    }
+  }
 }
+
