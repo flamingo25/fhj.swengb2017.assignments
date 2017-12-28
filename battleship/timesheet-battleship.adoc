@@ -14,7 +14,7 @@
 | 1
 | 3
 | First thoughts about the project and how to solve it.
-| Online research to gain more informatin about the thought behind a .proto file and how to implement it correctly.
+| Online research to gain more information about the thought behind a .proto file and how to implement it correctly.
 | Colors: We decided to make the colors of the GridPane compatible with the coloring of the VBox.
 
 | Krnavkov16
@@ -22,11 +22,11 @@
 | 2
 | 5
 | Implementing a background image: Firstly, we wanted to choose a background-image of the Border Pane directly in the
-| SceneBilder but this wasn’t possible because the file path couldn’t be reached/decoded.
+| SceneBuilder but this was not possible because the file path couldn’t be reached/decoded.
 | Then we tried to solve this problem by creating a new .css file but this solution didn’t work either,
-| the Border Pane was still blank. After some depressed moments we decided to implement ImageView and Paste the picture
+| the Border Pane was still blank. After some depressed moments we decided to implement ImageView and Paste the pictures
 | into the course repository, so the application is independent of the infrastructure where it is started
-| (otherwise it wouldn’t be possible to find the pictures when running the application on another computer if the
+| (otherwise it would not be possible to find the pictures when running the application on another computer if the
 | pictures would be saved locally). Many websites (e.g. https://docs.oracle.com/javafx/2/layout/style_css.htm) have been
 | a big help.
 
@@ -37,8 +37,8 @@
 | Implementing a Save and a Load Button: We inspired us by the way how the “New Game” button was designed and figured
 | out that the destination file is the “BattleShipFxController.scala”. Our first thoughts were that we need to implement
 | a Serializable interface in order to convert an objects state to a byte stream so that the stream can be reverted back
-| into a copy of the object. Then write the object to a file and afterwards read the file back again. This part we
-| implemented in a new Java Class called SaveSerializable combined with another Java Class SomeMagic. This variation
+| into a copy of the object. Then write the object to a file and afterwards read the file back again. We implemented
+| this part in a new Java Class called SaveSerializable combined with another Java Class SomeMagic. This variation
 | appears to be very complex, reducing the performance of the application (this is the reason why we probably won't
 | implement theese classes in the final version of the project).
 | After a longer search we figured out that also the file “BattleShipGame.scala” is essential for a successful
@@ -50,7 +50,7 @@
 | 2
 | 4
 | First try to implement a .proto file. Our online research gave us some hints, including the prediction that the .proto
-| file is a subjective and individually build but very important part of the project. We will be working more on this
+| file is a subjective and individually built but very important part of the project. We will be working more on this
 | file to produce an effective and working version.
 | Ongoing search for a solution to the Save/Load - Task
 
@@ -62,10 +62,21 @@
 | thoughts. What makes Protocol buffers such a powerful feature?
 | Fixing bugs with the wish to get a functional Save and Load button.
 
-|
-|
-|
-|
-|
+| Hutters16
+| 28.12.17
+| 3
+| 4
+| Finally solving our problem with the Save- and Load- functions by implementing the Scala feature FileChooser. After a
+| long fight with the syntax we found a functional way and were the happiest persons alive. Our biggest unsecurity was
+| to decide whether we have to save the game state in a special file format or maybe we could skip this part and hope
+| the Application will work properly even without answering this question.
+
+| Huetters16, Krnavkov16
+| 29.12.17
+| 1
+| 3
+| Last changes on the design, finishing the timesheet file and trying to implement the slider. After some moments we
+| decided to delete this slider because it caused too many errors and did not want to work.
+| This assignment was a challenge for us but we are proud of us for being able to finish most of the tasks.
 
 |===

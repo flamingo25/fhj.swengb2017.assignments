@@ -1,0 +1,56 @@
+After compiling the BattleShipFX and BattleShipModel part of our assignment repository a suitable protobuf file was a
+necessity to get the BattleShipFxApp running.
+Service-oriented architecture (protocol buffers) is a flexible, efficient, automated mechanism for serializing structured
+data. Serialization describes the process of converting a project to a suitable (binary) format in which it can be stored
+for example in a file as it has to be done in our assignment.
+
+
+Our example:
+
+syntax = "proto3"; --> proto3 is the new "edition" which supports more programming languages
+
+package at.fhj.swengb.apps.battleship;
+
+option java_package         = "at.fhj.swengb.apps.battleship";  --> for which package is the .proto file executed
+
+option java_outer_classname = "BattleShipProtobuf";             --> classname definition
+
+
+    message BattleShipGame {                --> messages used to specify how the BattleShipGame components should be
+        BattleField battlefield = 1;            structured
+        repeated BattlePos order = 2;
+    }
+
+    enum Direction {                        --> this message is of type enum because this data type allows a variable to
+        Horizontal = 0;                         be a set of predefined constants which is essencial for the vessel direction
+        Vertical = 1;                           (orientation) to work properly. We have created this message according to
+    }                                           knowledge we gained by studying of the MazeRunner .proto file.
+
+    message BattlePos {                     --> this message describes the value battlePos (position of the battle) with
+        int32 x = 1;                            only two logical members: x and y with descading values chosen after a couple
+        int32 y = 2;                            of hours of playing battlShipGame in the course repository
+    }
+
+    message BattleField {                   --> this messsage describes the design of the battleField (= where the "ship
+        int32 width = 1;                        battle" takes place). Only three components influence the structure of the
+        int32 height = 2;                       field. Of course the width and the height of the field have to be part of
+        Fleet fleet = 3;                        this message. Also the fleet placed on the battlefield is esssential
+    }                                           because we are not allowed to forget any ships.
+
+
+    message Fleet {                         --> this message describes the fleet. We decided for an additional message
+        repeated Vessel vessels = 1;            for the fleet in order to describe it's components = the vessels (ships)
+    }
+
+
+    message Vessel {                        --> this message is the last step of the nested messages describing the vessels
+        string name = 1;                        by defining the name (one word = string should do it), the starting Position,
+        BattlePos startPos = 2;                 in which direction the ship "grows" and how big the vessel actually is.
+        Direction direction = 3;
+        int32 size = 4;
+        }
+
+
+We have chosen this types of messages with the certain values because of hints Mr. Ladstätter has hidden in the description
+of this Home Assignment and inspired us by the .proto file he created for the MazeRunner Application. Other attributes
+would not be important enough to have an influence on the structure of the game.

@@ -2,9 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,26 +11,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="540.0" prefWidth="752.0" style="-fx-background-color: #999999;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.battleship.jfx.BattleShipFxController">
     <right>
 
 
     </right>
-    <top>
-        <Label prefHeight="62.0" prefWidth="309.0" text="BATTLESHIP" BorderPane.alignment="CENTER">
-            <font>
-                <Font name="Jokerman" size="36.0" />
-            </font>
-         <padding>
-            <Insets top="5.0" />
-         </padding>
-         <effect>
-            <DropShadow color="#00000080" />
-         </effect>
-        </Label>
-    </top>
     <right>
         <VBox alignment="CENTER" prefHeight="392.0" prefWidth="138.0" style="-fx-background-color: #800000;" BorderPane.alignment="CENTER">
             <children>
@@ -66,7 +50,7 @@
         </VBox>
     </right>
     <center>
-        <GridPane fx:id="battleGroundGridPane" alignment="CENTER" hgap="5.0" vgap="5.0" BorderPane.alignment="CENTER">
+        <GridPane fx:id="battleGroundGridPane" alignment="CENTER_RIGHT" hgap="5.0" prefHeight="356.0" prefWidth="355.0" vgap="5.0" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
@@ -92,8 +76,11 @@
                 <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
             </rowConstraints>
          <BorderPane.margin>
-            <Insets left="10.0" top="10.0" />
+            <Insets bottom="5.0" left="8.0" right="5.0" top="5.0" />
          </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+         </padding>
         </GridPane>
     </center>
    <effect>
@@ -106,4 +93,17 @@
          </effect>
       </TextArea>
    </bottom>
+   <left>
+      <ImageView fitHeight="416.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@battleShipGame.jpg" />
+         </image>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </ImageView>
+   </left>
 </BorderPane>
