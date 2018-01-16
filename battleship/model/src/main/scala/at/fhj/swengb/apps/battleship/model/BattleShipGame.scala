@@ -45,10 +45,18 @@ case class BattleShipGame(battleField: BattleField,
 
   }
 
-  def loadOrder(pos: List[BattlePos]): Unit = {
+  def loadOrder(pos: List[BattlePos],sim: Boolean): Unit = {
+    if (sim == true) {
+      for (p <- pos) {
+        val cell: BattleFxCell = cells.filter(x => x.pos.equals(p)).head
+        cell.simClick()
+      }
+    }
+    else {
     for (p <- pos) {
       val cell: BattleFxCell = cells.filter(x => x.pos.equals(p)).head
       cell.mouseClick()
+      }
     }
   }
 
@@ -83,7 +91,7 @@ case class BattleShipGame(battleField: BattleField,
         sunkShips = sunkShips + vessel
 
         if (battleField.fleet.vessels == sunkShips) {
-          log("GAME OVER")
+          log("G A M E   totally  O V E R")
         }
       }
 
